@@ -1,9 +1,43 @@
-// config.js
+const config = {
+    // ... (vos paramètres existants)
+    TAUNTS: [
+        "T'es sûr que t'as bien branché ton cerveau ? 🧠⚡",
+        "Mon bot a plus de répartie que toi 🤖",
+        "404 - Réponse intelligente introuvable",
+        "Wow... c'est tout ? 😴"
+    ],
+    TAUNT_PROBABILITY: 0.3 // 30% de chance de répondre
+}// config.js
 const fs = require("fs");
 require("dotenv").config();
+const trollPhrases = [
+  "Ah oui, la luminosité de ton intelligence est... éteinte. 💡🚫",
+  "Si la connerie était une crypto, tu serais le Bitcoin. 📉",
+  "Je t'envoie une carte postale du Sahara... oh wait, t'es déjà sec. 🏜️",
+  "Ton QI est comme une liste Python : ['bas', 'très bas', '...']. 🐍",
+  "Même Siri a refusé de répondre à ça. 🍎🤖",
+  "T'es sûr que t'as pas oublié ton cerveau chez moi ? 🧠🚪",
+  "Attends, je cherche une réponse à ta hauteur... *chargeur 1%* 🔋",
+  "J'ai 99 problèmes, mais toi t'en es 127. 💯",
+  "Ton existence me donne des idées... de sieste. 😴",
+  "Wow. Tellement vide que ça mérite un '404 Personality Not Found'. ❌"
+];
+
+// Réponse aléatoire avec mention
+if (body.startsWith('!troll')) {
+  const randomTroll = trollPhrases[Math.floor(Math.random() * trollPhrases.length)];
+  await sock.sendMessage(
+    m.chat,
+    { 
+      text: `@${m.sender.split('@')[0]} ${randomTroll}`,
+      mentions: [m.sender]
+    },
+    { quoted: m }
+  );
+}
 
 const config = {
-  SESSION_ID: process.env.SESSION_ID || "nector~14YUhBSJ#eOWaWeoGMpOyvONCz9swFtZ8q24InOPtgV21vPrPKyg",
+  SESSION_ID: process.env.SESSION_ID || "nector~lxZTXDCR#lZ_z55ylRk81YIvgUwF4S3Z56aLmT-FE_vPZDpeKFUc",
   PREFIX: process.env.PREFIX || '*',
   AUTO_STATUS_SEEN: process.env.AUTO_STATUS_SEEN !== undefined ? process.env.AUTO_STATUS_SEEN === 'true' : true, 
   AUTO_STATUS_REPLY: process.env.AUTO_STATUS_REPLY !== undefined ? process.env.AUTO_STATUS_REPLY === 'true' : true,
